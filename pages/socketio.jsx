@@ -4,12 +4,12 @@ import io from 'socket.io-client'
 export default () => {
   useEffect(() => {
 
-    const socket = new WebSocket('ws://localhost:3001');
+    /* const socket = new WebSocket('ws://localhost:3001');
 
     socket.addEventListener('open', (e) => {
         console.log("connected to ws")
-    })
-    /* fetch('ws://localhost:3001').finally(() => {
+    }) */
+    fetch('/api/scoketio').finally(() => {
       const socket = io()
 
       socket.on('connect', () => {
@@ -28,7 +28,7 @@ export default () => {
       socket.on('disconnect', () => {
         console.log('disconnect')
       })
-    }) */
+    })
   }, []) // Added [] as useEffect filter so it will be executed only once, when component is mounted
 
   return <h1>Socket.io</h1>
