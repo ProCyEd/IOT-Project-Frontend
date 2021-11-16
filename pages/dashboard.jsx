@@ -21,6 +21,8 @@ import { mainListItems, secondaryListItems } from '../components/listItems';
 import Chart from '../components/chart';
 import Deposits from '../components/deposits';
 import Orders from '../components/orders';
+import Title from '../components/Title';
+import StickyHeadTable from '../components/table';
 
 
 function Copyright(props) {
@@ -123,15 +125,19 @@ function Copyright(props) {
                 variant="h6"
                 color="inherit"
                 noWrap
-                sx={{ flexGrow: 1 }}
+                sx={{ flexGrow: 2 }}
               >
                 IOT Controller
               </Typography>
+
+
               <IconButton color="inherit">
-                <Badge badgeContent={4} color="secondary">
+                <Badge badgeContent={2000} color="secondary">
                   <NotificationsIcon />
                 </Badge>
               </IconButton>
+
+
             </Toolbar>
           </AppBar>
           <Drawer variant="permanent" open={open}>
@@ -165,8 +171,25 @@ function Copyright(props) {
             }}
           >
             <Toolbar />
+            
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+              
               <Grid container spacing={3}>
+
+                <Grid item xs ={12} md={8} lg={9}>
+                  <Paper
+                  sx={{
+                    p: 2, 
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '240',
+                  }}
+                  >                    
+              <StickyHeadTable/>
+
+                  </Paper>
+                </Grid>
+              
                 {/* Chart */}
                 <Grid item xs={12} md={8} lg={9}>
                   <Paper
@@ -177,6 +200,8 @@ function Copyright(props) {
                       height: 240,
                     }}
                   >
+
+                    
                     <Chart />
                   </Paper>
                 </Grid>
@@ -200,7 +225,7 @@ function Copyright(props) {
                   </Paper>
                 </Grid>
               </Grid>
-              <Copyright sx={{ pt: 4 }} />
+              {/* <Copyright sx={{ pt: 4 }} /> */}
             </Container>
           </Box>
         </Box>
@@ -208,6 +233,7 @@ function Copyright(props) {
     );
   }
   
+
   export default function Dashboard() {
     return <DashboardContent />;
   }
