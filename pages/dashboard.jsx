@@ -17,12 +17,14 @@ import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import { mainListItems, secondaryListItems } from '../components/listItems';
 import Chart from '../components/chart';
 import Deposits from '../components/deposits';
 import Orders from '../components/orders';
 import Title from '../components/Title';
 import StickyHeadTable from '../components/table';
+import { default as NextLink } from 'next/link'
 
 
 function Copyright(props) {
@@ -130,12 +132,19 @@ function Copyright(props) {
                 IOT Controller
               </Typography>
 
-
               <IconButton color="inherit">
                 <Badge badgeContent={2000} color="secondary">
                   <NotificationsIcon />
                 </Badge>
               </IconButton>
+
+              <NextLink href='/' passHref>
+                <IconButton href='' color="inherit">
+                  <Badge color="secondary">
+                    <LogoutOutlinedIcon></LogoutOutlinedIcon>
+                  </Badge>
+                </IconButton>
+              </NextLink>
 
 
             </Toolbar>
