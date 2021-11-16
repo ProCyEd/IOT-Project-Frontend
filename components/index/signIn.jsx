@@ -25,15 +25,39 @@ const theme = createTheme({
   });
 
 export default function SignIn() {
+
 const router = useRouter()
-  const handleSubmit = (event) => {
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    const creds = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+
+    const data = {
+      email: creds.get('email'),
+      password: creds.get('password')
+    }
+    
+    await fetch('http://localhost:3000/api/checkUser', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+      if(data.result) {
+        router.push('/home')
+      } else {
+        console.log("Invalid Login")
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
     });
+
+    
   };
 
   return (
@@ -94,7 +118,6 @@ const router = useRouter()
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={() => router.push('/home')}
             >
               Sign In
             </Button>
