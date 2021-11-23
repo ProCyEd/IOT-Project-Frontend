@@ -11,16 +11,26 @@ export default async function signup(req, res) {
         email: req.body.email,
         password: hash
       }
+      $.ajax({
+        url: '/addme',
+        type: 'POST',
+        data: {person},
+        dataType: 'json',
+        success: function () {
+          console.log("successfully signed up: "+person)
+        }
 
-      await fetch('http://localhost:3000/api/data', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(person),
-    })
-    .then(response => response.json())
-    .then(data => res.json(data));
+      })
+      
+    //   await fetch('http://localhost:3000/api/data', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(person),
+    // })
+    // .then(response => response.json())
+    // .then(data => res.json(data));
     });
     
   } else {
