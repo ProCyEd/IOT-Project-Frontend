@@ -11,7 +11,10 @@ export default async function signup(req, res) {
         email: req.body.email,
         password: hash
       }
-      $.ajax({
+
+      console.log(person.password)
+      
+      /* $.ajax({
         url: '/addme',
         type: 'POST',
         data: {person},
@@ -20,7 +23,7 @@ export default async function signup(req, res) {
           console.log("successfully signed up: "+person)
         }
 
-      })
+      }) */
       
     //   await fetch('http://localhost:3000/api/data', {
     //   method: 'POST',

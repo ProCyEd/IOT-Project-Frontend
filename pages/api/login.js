@@ -4,16 +4,16 @@ import { secret } from '../../api/secret';
 
 export default async function login(req, res) {
 
-  let person = null
+  var person = null
 
   if (req.method === 'POST') {
 
     const peopleRes = await fetch('http://localhost:3000/api/data', {method: 'GET'});
-
-    console.log(peopleRes)
     const people = await peopleRes.json()
-    console.log(people)
-    for(let i = 0; i < people.lenth; i++) {
+
+    for(let i = 0; i < people.length; i++) {
+      console.log(people[i].email)
+      console.log(req.body.email)
       if(people[i].email == req.body.email) {
         person = people[i];
         break;
@@ -22,15 +22,25 @@ export default async function login(req, res) {
 
     if(person == null) res.json({ message: 'Ups, something went wrong!' });
 
-    compare(req.body.password, person.password, function(err, result) {
+    if (req.body.password == person.password) {
+      const claims = { myPersonEmail: person.email };
+      const jwt = sign(claims, secret, { expiresIn: '1h' });
+      res.json({ authToken: jwt });
+    } else {
+      res.json({ message: 'Ups, something went wrong! Inside though' });
+    }
+
+    /* compare(req.body.password, person.password, function(err, result) {
+      console.log(req.body.password)
+      console.log(person.password)
       if (!err && result) {
         const claims = { myPersonEmail: person.email };
         const jwt = sign(claims, secret, { expiresIn: '1h' });
         res.json({ authToken: jwt });
       } else {
-        res.json({ message: 'Ups, something went wrong!' });
+        res.json({ message: 'Ups, something went wrong! Inside though' });
       }
-    });
+    }); */
       
   } else {
     res.status(405).json({ message: 'We only support POST' });
