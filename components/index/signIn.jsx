@@ -38,7 +38,7 @@ const router = useRouter()
       password: creds.get('password')
     }
     
-    await fetch('http://localhost:3000/api/login', {
+    await fetch('http://localhost:3000/api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -47,8 +47,7 @@ const router = useRouter()
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data)
-      if(data.authToken) {
+      if(data.message == 'success') {
         router.push('/home')
       } else {
         console.log("Invalid Login")

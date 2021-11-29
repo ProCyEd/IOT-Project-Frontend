@@ -1,6 +1,6 @@
 import { compare } from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { secret } from '../../api/secret';
+import cookie from 'cookie';
 
 export default async function login(req, res) {
 
@@ -8,12 +8,10 @@ export default async function login(req, res) {
 
   if (req.method === 'POST') {
 
-    const peopleRes = await fetch('http://localhost:3000/api/data', {method: 'GET'});
+    const peopleRes = await fetch('http://localhost:3000/api/auth/data', {method: 'GET'});
     const people = await peopleRes.json()
 
     for(let i = 0; i < people.length; i++) {
-      console.log(people[i].email)
-      console.log(req.body.email)
       if(people[i].email == req.body.email) {
         person = people[i];
         break;
@@ -24,9 +22,16 @@ export default async function login(req, res) {
 
     if (req.body.password == person.password) {
       const claims = { myPersonEmail: person.email };
-      const accessToken = jwt.sign(claims, '8af60e0d-b394-48b2-9bfe-9a1034fa1096')
+      const accessToken = jwt.sign(claims, process.env.ACCESS_TOKEN)
       //const jwt = sign(claims, secret, { expiresIn: '1h' });
-      res.json({ authToken: accessToken });
+      res.setHeader("Set-Cookie", cookie.serialize("token", accessToken, {
+        httpOnly: true,
+        //secure: needs to be set to http only but in dev we dont have that
+        maxAge: 60 * 60,
+        sameSite: "strict",
+        path: "/"
+      }))
+      res.json({ message: 'success'});
     } else {
       res.json({ message: 'Ups, something went wrong! Inside though' });
     }
