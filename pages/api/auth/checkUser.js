@@ -16,7 +16,6 @@ const users = [
 export default function checkUser(req, res) {
 
     let flag = false
-    console.log(req.body)
     
     for (let i = 0; i < users.length; i++) {
         if(users[i].email == req.body.email && users[i].password == req.body.password) {

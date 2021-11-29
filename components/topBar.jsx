@@ -13,6 +13,10 @@ import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
 import { mainListItems, secondaryListItems } from './listItems';
 
+/* async function signOut() {
+  const result = await fetch('http://localhost:3000/api/auth/logout')
+}
+ */
 export default function TopBar(){
 
     const drawerWidth = 240;
@@ -98,7 +102,7 @@ export default function TopBar(){
               </Typography>
 
 
-              <IconButton color="inherit">
+              <IconButton color="inherit" /* onClick={signOut()} */>
                 <Badge badgeContent={2000} color="secondary">
                   <NotificationsIcon />
                 </Badge>
