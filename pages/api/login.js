@@ -1,5 +1,5 @@
 import { compare } from 'bcrypt';
-import { sign } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 import { secret } from '../../api/secret';
 
 export default async function login(req, res) {
@@ -24,8 +24,9 @@ export default async function login(req, res) {
 
     if (req.body.password == person.password) {
       const claims = { myPersonEmail: person.email };
-      const jwt = sign(claims, secret, { expiresIn: '1h' });
-      res.json({ authToken: jwt });
+      const accessToken = jwt.sign(claims, '8af60e0d-b394-48b2-9bfe-9a1034fa1096')
+      //const jwt = sign(claims, secret, { expiresIn: '1h' });
+      res.json({ authToken: accessToken });
     } else {
       res.json({ message: 'Ups, something went wrong! Inside though' });
     }

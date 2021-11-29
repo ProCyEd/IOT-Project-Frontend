@@ -47,6 +47,7 @@ const router = useRouter()
     })
     .then(response => response.json())
     .then(data => {
+      console.log(data)
       if(data.authToken) {
         router.push('/home')
       } else {
