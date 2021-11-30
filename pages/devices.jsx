@@ -13,6 +13,7 @@ import Copyright from '../components/copyright';
 import PropTypes from 'prop-types';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
+import Checkout from "../components/devices/checkout";
 
 
 import EnhancedTable from '../components/devices/deviceTableOne';
@@ -23,7 +24,7 @@ const mdTheme = createTheme({
           main: '#FF0000',
         },
     }
-  });
+});
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -43,8 +44,9 @@ function TabPanel(props) {
             )}
         </div>
     );
-  }
-  
+}
+
+
 TabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.number.isRequired,
@@ -56,11 +58,11 @@ function a11yProps(index) {
         id: `simple-tab-${index}`,
         'aria-controls': `simple-tabpanel-${index}`,
     };
-  }
+}
 
 
 
-const Item = styled(Paper)(({ theme }) => ({
+const Item = styled(Box)(({ theme }) => ({
     ...theme.typography.body2,
     padding: theme.spacing(2),
     color: theme.palette.text.secondary,
@@ -81,73 +83,72 @@ export default function Devices(){
             <ThemeProvider theme={mdTheme}>
             <Box sx={{ display: 'flex' }}>
 
-<CssBaseline />
+                <CssBaseline />
 
-{/* Navigaiton */}
-<TopBar></TopBar>
+                {/* Navigaiton */}
+                <TopBar></TopBar>
 
+                <Box
+                    component="main"
+                    sx={{
+                    backgroundColor: (theme) =>
+                        theme.palette.mode === 'light'
+                        ? theme.palette.grey[100]
+                        : theme.palette.grey[900],
+                    flexGrow: 1,
+                    height: '100vh',
+                    overflow: 'auto',
+                    }}
+                >
+                    <Toolbar />
+                    
+                    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
 
-<Box
-    component="main"
-    sx={{
-    backgroundColor: (theme) =>
-        theme.palette.mode === 'light'
-        ? theme.palette.grey[100]
-        : theme.palette.grey[900],
-    flexGrow: 1,
-    height: '100vh',
-    overflow: 'auto',
-    }}
->
-    <Toolbar />
-    
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+                        <Box sx={{ width: '100%' }}>
 
-        <Box sx={{ width: '100%' }}>
+                            {/* Tab labels and organizaiton */}
 
-            {/* Tab labels and organizaiton */}
+                            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                                    <Tab label="Catagory One" {...a11yProps(0)} />
+                                    <Tab label="Item Two" {...a11yProps(1)} />
+                                    <Tab label="Item Three" {...a11yProps(2)} />
+                                </Tabs>
+                            </Box>
+                            
 
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab label="Catagory One" {...a11yProps(0)} />
-                    <Tab label="Item Two" {...a11yProps(1)} />
-                    <Tab label="Item Three" {...a11yProps(2)} />
-                </Tabs>
-            </Box>
+                            {/* Tab Content */}
+                            <TabPanel value={value} index={0}>
+                                <Box sx={{flexFrow: 1 }}>
+                                    <Grid container spacing={0}>
+                                        <Grid item xs={9}>
+                                            <Item>
+                                                <EnhancedTable></EnhancedTable>
+                                            </Item>
+                                        </Grid>
+                                        <Grid item xs={3}>
+                                            <Item>
+                                                <Checkout></Checkout>
+                                            </Item>
+                                        </Grid>
+                                    </Grid>
+                                </Box>
+                            </TabPanel>
+                            <TabPanel value={value} index={1}>
+                                
+                            </TabPanel>
+                            <TabPanel value={value} index={2}>
+                                Hello World Three
+                            </TabPanel>
 
-            
+                        </Box>
 
-            {/* Tab Content */}
-            <TabPanel value={value} index={0}>
-                <Box sx={{flexFrow: 1 }}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={10}>
-                            <Item>
-                                <EnhancedTable></EnhancedTable>
-                            </Item>
-                        </Grid>
-                        <Grid item xs={2}>
-                            <Item>2</Item>
-                        </Grid>
-                    </Grid>
+                        {/* Copyright */}
+                        <Copyright></Copyright>
+
+                    </Container>
                 </Box>
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-                Hello World Two
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-                Hello World Three
-            </TabPanel>
-
-
-        </Box>
-
-        {/* Copyright */}
-        <Copyright></Copyright>
-
-    </Container>
-</Box>
-</Box>
+                </Box>
             </ThemeProvider>
         </div>
     )
