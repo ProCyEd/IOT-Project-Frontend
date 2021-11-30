@@ -7,7 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import Title from './Title';
+import Title from '../Title';
 
 const columns = [
   { id: 'name', label: 'Name', minWidth: 170 },
@@ -41,7 +41,7 @@ function createData(name, code, population, size) {
 }
 
 const rows = [
-  createData('India', 'IN', 1324171354, 3287263),
+  createData('Cole', 'IN', 1324171354, 3287263),
   createData('China', 'CN', 1403500365, 9596961),
   createData('Italy', 'IT', 60483973, 301340),
   createData('United States', 'US', 327167434, 9833520),
