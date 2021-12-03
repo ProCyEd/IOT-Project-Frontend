@@ -4,6 +4,5 @@ export default async function verifyToken() {
         credentials: 'include'
     })
     const res = await result.json()
-    console.log(res)
     return res;
 }
