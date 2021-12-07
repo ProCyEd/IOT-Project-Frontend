@@ -25,10 +25,10 @@ export default async function login(req, res) {
 
   if (req.method === 'POST') {
 
-    const people = await getUserEmails();
+    //const people = await getUserEmails();
 
-    /* const peopleRes = await fetch('http://localhost:3000/api/auth/data', {method: 'GET'});
-    const people = await peopleRes.json() */
+    const peopleRes = await fetch('http://localhost:3000/api/auth/data', {method: 'GET'});
+    const people = await peopleRes.json()
 
     for(let i = 0; i < people.length; i++) {
       if(people[i].email == req.body.email) {
