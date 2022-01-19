@@ -6,6 +6,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import DevicesIcon from '@mui/icons-material/Devices';
 import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
@@ -22,12 +23,13 @@ export const mainListItems = (
 		</ListItem>
 	</Link>
 
-    <Link href="/">
+    <Link href="devices">
 		<ListItem button>
 		<ListItemIcon>
-			<ShoppingCartIcon />
+			{/* <ShoppingCartIcon /> */}
+			<DevicesIcon></DevicesIcon>
 		</ListItemIcon>
-		<ListItemText primary="Orders" />
+		<ListItemText primary="Devices" />
 		</ListItem>
 	</Link>
 

@@ -12,6 +12,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
 import { mainListItems, secondaryListItems } from './listItems';
+import Link from 'next/link';
 
 /* async function signOut() {
   const result = await fetch('http://localhost:3000/api/auth/logout')
@@ -98,7 +99,11 @@ export default function TopBar(){
                 noWrap
                 sx={{ flexGrow: 2 }}
               >
-                IOT Controller
+                
+                <Link href="home">
+                  IOT Controller
+                </Link>
+
               </Typography>
 
 
