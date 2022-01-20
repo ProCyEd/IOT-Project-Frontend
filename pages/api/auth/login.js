@@ -1,12 +1,31 @@
 import { compare } from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import cookie from 'cookie';
+const BSON = require('bson');
+
+async function getUserEmails() {
+  let socket = new WebSocket("ws://144.75.134.25:8765");
+    socket.onopen = () => {
+      console.log("Connected")
+      const request = {
+        method: 'GET',
+        data: 'User Emails'
+      }
+      socket.send(BSON.serialize(request));
+    }
+
+    socket.onmessage = (e) => {
+      return e.data
+    }
+}
 
 export default async function login(req, res) {
 
   var person = null
 
   if (req.method === 'POST') {
+
+    //const people = await getUserEmails();
 
     const peopleRes = await fetch('http://localhost:3000/api/auth/data', {method: 'GET'});
     const people = await peopleRes.json()
@@ -26,7 +45,7 @@ export default async function login(req, res) {
       //const jwt = sign(claims, secret, { expiresIn: '1h' });
       res.setHeader("Set-Cookie", cookie.serialize("token", accessToken, {
         httpOnly: true,
-        //secure: needs to be set to http only but in dev we dont have that
+        //secure: needs to be set to https only but in dev we dont have that
         maxAge: 60 * 60,
         sameSite: "strict",
         path: "/"
