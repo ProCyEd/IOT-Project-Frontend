@@ -12,6 +12,8 @@ import Orders from '../components/dashboard/orders';
 import StickyHeadTable from '../components/dashboard/table';
 import TopBar from '../components/dashboard/topBar';
 import Copyright from '../components/copyright';
+import withAuth from '../components/auth/checkPerms';
+import { default as NextLink } from 'next/link'
 
   
 
@@ -117,6 +119,8 @@ import Copyright from '../components/copyright';
   }
   
 
-  export default function Dashboard() {
+  function Dashboard() {
     return <DashboardContent />;
   }
+
+  export default withAuth(Dashboard)
