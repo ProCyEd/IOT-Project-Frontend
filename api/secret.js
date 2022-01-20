@@ -1,1 +1,0 @@
-export const secret = '8af60e0d-b394-48b2-9bfe-9a1034fa1096';

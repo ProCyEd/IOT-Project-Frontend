@@ -3,22 +3,6 @@ import jwt from 'jsonwebtoken';
 import cookie from 'cookie';
 const BSON = require('bson');
 
-async function getUserEmails() {
-  let socket = new WebSocket("ws://144.75.134.25:8765");
-    socket.onopen = () => {
-      console.log("Connected")
-      const request = {
-        method: 'GET',
-        data: 'User Emails'
-      }
-      socket.send(BSON.serialize(request));
-    }
-
-    socket.onmessage = (e) => {
-      return e.data
-    }
-}
-
 export default async function login(req, res) {
 
   var person = null
