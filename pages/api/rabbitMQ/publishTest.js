@@ -10,7 +10,7 @@ export default async function publish(req, res) {
             const connection = await amqp.connect("amqps://msdqunsz:8HfRRHR4k_1MnSrcSnL2dFadlDbYhsGJ@fish.rmq.cloudamqp.com/msdqunsz")
             const channel = await connection.createChannel();
             const result = await channel.assertQueue("frontendSend");
-            channel.sendToQueue("frontendSend", Buffer.from(JSON.stringify(message)))
+            channel.sendToQueue("pythonTest", Buffer.from(JSON.stringify(message)))
             res.send({ response: `Job ${message} Success`, status: true})
             
         } catch (error) {
