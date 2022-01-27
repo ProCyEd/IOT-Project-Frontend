@@ -16,6 +16,7 @@ import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button'
 import Checkout from "../components/devices/checkout";
 import EnhancedTable from '../components/devices/deviceTableOne';
+import DeviceBuilder from "../functions/deviceBuilder";
 
 const mdTheme = createTheme({
     palette: {
@@ -168,12 +169,12 @@ export default function Devices(){
                             <div>Lightbulb Control</div>
                                 
                             <Button variant="contained" color="success" onClick={() => toggle(true)}>Turn On</Button>
-                            <Button variant="contained" color="error" onClick={() => toggle(false)}>Turn Off</Button>
+                            <Button variant="contained" color="error" onClick={() => run()}>Turn Off</Button>
 
 
                             </TabPanel>
                             <TabPanel value={value} index={2}>
-                                Hello World Three
+                                <DeviceBuilder></DeviceBuilder>
                             </TabPanel>
 
                         </Box>
