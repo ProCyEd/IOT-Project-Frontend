@@ -43,9 +43,9 @@ export default function Toggle({name}) {
         if(!checked && !disabled) {
             return <Alert severity="error">Off</Alert>
         } else if(disabled) {
-            <Alert severity="warning">This is a warning alert — check it out!</Alert>
+            return <Alert severity="warning">Sending Request</Alert>
         } else {
-            <Alert severity="success">This is a success alert — check it out!</Alert>
+            return <Alert severity="success">On</Alert>
         }
     }
 

@@ -32,8 +32,8 @@ const router = useRouter()
     event.preventDefault();
     const creds = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
-    router.push('/home')
-   /*  const data = {
+    
+    const data = {
       email: creds.get('email'),
       password: creds.get('password')
     }
@@ -55,7 +55,7 @@ const router = useRouter()
     })
     .catch((error) => {
       console.error('Error:', error);
-    }); */
+    });
 
     
   };
