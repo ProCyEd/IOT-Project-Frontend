@@ -8,23 +8,17 @@ function Builder({data}) {
     const device = data
     const controls = device.controls
 
-    console.log(device)
-
     const form = controls.map((control, index) => {
         return determineControl(control, index)
     })
 
     form.unshift(<h1 key={0}>{device.name}</h1>)
 
-    console.log("form after")
-    console.log(form)
-
     return form
 }
 
 function determineControl(control, index) {
     index = index + 1
-    console.log(control)
     switch(control.type) {
         case 'switch': 
             return (<Toggle name={control.name} key={index}></Toggle>)
@@ -48,7 +42,6 @@ export default function DeviceBuilder() {
                 "name": "Brightness",
                 "type": "slider"
             },
-            
         ]
     }
 
