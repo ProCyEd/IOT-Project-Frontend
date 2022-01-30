@@ -4,7 +4,7 @@ import Slider from '@mui/material/Slider'
 export default function Mover({name}) {
     return <>
         <div>{name}</div>
-        <Slider defaultValue={50} aria-label="Default" valueLabelDisplay="auto" />;
+        <Slider defaultValue={50} aria-label="Default" valueLabelDisplay="auto" />
     </> 
   
 }

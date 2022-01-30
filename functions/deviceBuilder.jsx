@@ -2,6 +2,7 @@ const data = require('./testData.json')
 import React from 'react';
 import Toggle from './controls/toggle'
 import Mover from './controls/slider'
+import ColorPicker from './controls/colorPicker'
 
 function Builder({data}) {
 
@@ -42,6 +43,7 @@ export default function DeviceBuilder() {
                 "name": "Brightness",
                 "type": "slider"
             },
+            
         ]
     }
 
@@ -49,6 +51,7 @@ export default function DeviceBuilder() {
   return (
     <div>
         <Builder data={data} ></Builder>
+        <ColorPicker />
     </div>
   );
 }
