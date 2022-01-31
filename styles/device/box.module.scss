@@ -1,0 +1,53 @@
+@import '../theme.module.scss';
+
+.container{
+    @include box_style_compelation;
+
+    .topContainer{
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+        border-bottom: 3px solid black;
+        padding-bottom: 2em;
+
+        .icon{
+            height: 8em;
+            width: 8em;
+        }
+
+        .title{
+            font-size: $heading_lg;
+        }
+    }
+
+    .bottomContainer{
+        display: grid;
+        grid-template-columns: 1.5fr 3fr;
+        margin: .5em auto auto auto;
+        grid-gap: 5em;
+
+        .descriptionContainer{
+
+            .descriptionTitle{
+                text-align: left;
+            }
+
+            .description{
+                @include p_graph;
+            }
+        }
+
+        .deviceContainer{
+
+            .deviceTitle{
+                // border-bottom: 3px solid black;
+            }
+
+            .nestedDevice{
+                display: grid;
+                grid-gap: 1em;
+                border-left: 3px solid black;
+            }
+        }
+    }
+
+}
