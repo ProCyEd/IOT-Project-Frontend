@@ -7,6 +7,6 @@ describe('The Home Page', () => {
 
       cy.url().should('include', '/home')
 
-      cy.getCookie('toke').should('exist')
+      cy.getCookie('token').should('exist')
     })
   })
