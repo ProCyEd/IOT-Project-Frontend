@@ -123,4 +123,5 @@ import { default as NextLink } from 'next/link'
     return <DashboardContent />;
   }
 
-  export default withAuth(Dashboard)
+  //export default withAuth(Dashboard)
+  export default Dashboard
