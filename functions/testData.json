@@ -1,0 +1,13 @@
+{
+    "name": "Lightbulb 1",
+    "controls": {
+        "switch": {
+            "name": "On/Off Switch",
+            "type": "boolean"
+        },
+        "slider": {
+            "name": "Brightness",
+            "type": "float"
+        }
+    }
+}
