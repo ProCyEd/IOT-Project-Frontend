@@ -8,17 +8,18 @@ import Grid from '@mui/material/Grid';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
-import TopBar from '../components/dashboard/topBar';
-import Copyright from '../components/copyright';
+import TopBar from '../../components/dashboard/topBar';
+import Copyright from '../../components/copyright';
 import PropTypes from 'prop-types';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button'
-import Checkout from "../components/devices/checkout";
-import EnhancedTable from '../components/devices/deviceTableOne';
-import DeviceBuilder from "../functions/deviceBuilder";
-import styles from '../styles/device/device.module.scss';
-import IoTBox from "../components/devices/box";
+import Checkout from "../../components/devices/checkout";
+import EnhancedTable from '../../components/devices/deviceTableOne';
+import DeviceBuilder from "../../functions/deviceBuilder";
+import styles from '../../styles/device/device.module.scss';
+import IoTBox from "../../components/devices/box";
+import Link  from 'next/link';
 
 const mdTheme = createTheme({
     palette: {
@@ -107,6 +108,8 @@ const data = [
             {
                 "name": "Box 1",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum eu nisl ac tempor. Donec malesuada tempor faucibus. Curabitur eget mattis turpis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum eu nisl ac tempor. Donec malesuada tempor faucibus. Curabitur eget mattis turpis.",
+                "type": "1",
+                "id": "1",
                 "device": [
                     {
                         "name": "device1",
@@ -170,6 +173,73 @@ const data = [
             {
                 "name": "Box 2",
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum eu nisl ac tempor. Donec malesuada tempor faucibus. Curabitur eget mattis turpis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum eu nisl ac tempor. Donec malesuada tempor faucibus. Curabitur eget mattis turpis.",
+                "type": "2",
+                "id": "2",
+                "device": [
+                    {
+                        "name": "device1",
+                        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum eu nisl ac tempor.",
+                        "controls": [
+                            {
+                                "name": "switch",
+                                "function": "this is what the control does"
+                            },
+                            {
+                                "name": "switch",
+                                "function": "this is what the control does"
+                            },
+                            {
+                                "name": "switch",
+                                "function": "this is what the control does"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "device2",
+                        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum eu nisl ac tempor.",
+                        "controls": [
+                            {
+                                "name": "switch",
+                                "function": "this is what the control does"
+                            },
+                            {
+                                "name": "switch",
+                                "function": "this is what the control does"
+                            },
+                            {
+                                "name": "switch",
+                                "function": "this is what the control does"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "device3",
+                        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum eu nisl ac tempor.",
+                        "controls": [
+                            {
+                                "name": "switch",
+                                "function": "this is what the control does"
+                            },
+                            {
+                                "name": "switch",
+                                "function": "this is what the control does"
+                            },
+                            {
+                                "name": "switch",
+                                "function": "this is what the control does"
+                            }
+                        ]
+                    },
+                ]
+            },
+    },
+    {
+        "box": 
+            {
+                "name": "Box 3",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum eu nisl ac tempor. Donec malesuada tempor faucibus. Curabitur eget mattis turpis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum eu nisl ac tempor. Donec malesuada tempor faucibus. Curabitur eget mattis turpis.",
+                "type": "not falid",
+                "id": "3",
                 "device": [
                     {
                         "name": "device1",
@@ -267,14 +337,15 @@ export default function Devices(){
 
                         <Box sx={{ width: '100%' }}>
 
-                            <div className={styles.container}>
+                            <Link href={'/device2/' + "anything"}>
+                                <div className={styles.container}>
 
-                                {data.map((p) => (
-                                    <IoTBox props={p}></IoTBox>
-                                ))}
-
-                                {/* <IoTBox props={data}></IoTBox> */}
-                            </div>
+                                    {data.map((p) => (
+                                        <IoTBox props={p}></IoTBox>
+                                    ))}
+                                    
+                                </div>
+                            </Link>
 
                         </Box>
 

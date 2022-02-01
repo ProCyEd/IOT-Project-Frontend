@@ -1,7 +1,13 @@
 @import '../theme.module.scss';
 
+.icon{
+    height: 8em;
+    width: 8em;
+}
+
 .container{
     @include box_style_compelation;
+    @include box_hover;
 
     .topContainer{
         display: grid;
@@ -9,10 +15,7 @@
         border-bottom: 3px solid black;
         padding-bottom: 2em;
 
-        .icon{
-            height: 8em;
-            width: 8em;
-        }
+        
 
         .title{
             font-size: $heading_lg;
@@ -21,7 +24,7 @@
 
     .bottomContainer{
         display: grid;
-        grid-template-columns: 1.5fr 3fr;
+        grid-template-columns: 1.5fr .01fr 3fr;
         margin: .5em auto auto auto;
         grid-gap: 5em;
 
@@ -36,6 +39,12 @@
             }
         }
 
+        .split{
+            background-color: black;
+            // height: 2em;
+            margin-top: 2em;
+        }
+
         .deviceContainer{
 
             .deviceTitle{
@@ -45,7 +54,7 @@
             .nestedDevice{
                 display: grid;
                 grid-gap: 1em;
-                border-left: 3px solid black;
+                // border-left: 3px solid black;
             }
         }
     }
