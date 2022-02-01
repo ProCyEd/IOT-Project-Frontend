@@ -32,7 +32,7 @@ const router = useRouter()
     event.preventDefault();
     const creds = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
-
+    
     const data = {
       email: creds.get('email'),
       password: creds.get('password')

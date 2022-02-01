@@ -13,10 +13,12 @@ import Copyright from '../components/copyright';
 import PropTypes from 'prop-types';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
-import Button from '@mui/material/Button'
 import Checkout from "../components/devices/checkout";
+import styles from '../styles/Forms/forms.module.scss';
+import FormCard from "../components/forms/formCard";
+
+
 import EnhancedTable from '../components/devices/deviceTableOne';
-import DeviceBuilder from "../functions/deviceBuilder";
 
 const mdTheme = createTheme({
     palette: {
@@ -68,39 +70,9 @@ const Item = styled(Box)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
-async function toggle(type) {
-
-    var data;
-
-    if(type){
-        data = {
-            message: "on"
-        }
-    } else {
-        data = {
-            message: "off"
-        }
-    }
-
-    await fetch('http://localhost:3000/api/rabbitMQ/publishTest', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data.response)
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
-}
 
 
-
-export default function Devices(){
+export default function Forms(){
 
     const [value, setValue] = React.useState('one');
 
@@ -130,54 +102,18 @@ export default function Devices(){
                     overflow: 'auto',
                     }}
                 >
-                    <Toolbar />
+                   
                     
                     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
 
-                        <Box sx={{ width: '100%' }}>
-
-                            {/* Tab labels and organizaiton */}
-
-                            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                                    <Tab label="Catagory One" {...a11yProps(0)} />
-                                    <Tab label="Lightbulb" {...a11yProps(1)} />
-                                    <Tab label="Item Three" {...a11yProps(2)} />
-                                </Tabs>
-                            </Box>
+                        <div className={styles.spacer}></div>
+                        <div className={styles.container}>
                             
-
-                            {/* Tab Content */}
-                            <TabPanel value={value} index={0}>
-                                <Box sx={{flexFrow: 1 }}>
-                                    <Grid container spacing={0}>
-                                        <Grid item xs={9}>
-                                            <Item>
-                                                <EnhancedTable></EnhancedTable>
-                                            </Item>
-                                        </Grid>
-                                        <Grid item xs={3}>
-                                            <Item>
-                                                <Checkout></Checkout>
-                                            </Item>
-                                        </Grid>
-                                    </Grid>
-                                </Box>
-                            </TabPanel>
-                            <TabPanel value={value} index={1}>
-
-                            <div>Lightbulb Control</div>
-                                
-                            <Button variant="contained" color="success" onClick={() => toggle(true)}>Turn On</Button>
-                            <Button variant="contained" color="error" onClick={() => run()}>Turn Off</Button>
-
-
-                            </TabPanel>
-                            <TabPanel value={value} index={2}>
-                                <DeviceBuilder></DeviceBuilder>
-                            </TabPanel>
-
-                        </Box>
+                            <FormCard title="Title" subTitle="sub title"></FormCard>
+                            <FormCard title="Title" subTitle="sub title"></FormCard>
+                            <FormCard title="Title" subTitle="sub title"></FormCard>
+                            <FormCard title="Title" subTitle="sub title"></FormCard>
+                        </div>
 
                         {/* Copyright */}
                         <Copyright></Copyright>
