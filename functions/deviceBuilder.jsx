@@ -3,6 +3,9 @@ import React from 'react';
 import Toggle from './controls/toggle'
 import Mover from './controls/slider'
 import ColorPicker from './controls/colorPicker'
+import ControlToggleCard from './controls/deviceToggleCard';
+import ControlSliderCard from './controls/deviceSliderCard';
+import styles from '../styles/functions/deviceBuilder.module.scss';
 
 function Builder({data}) {
 
@@ -10,7 +13,12 @@ function Builder({data}) {
     const controls = device.controls
 
     const form = controls.map((control, index) => {
-        return determineControl(control, index)
+        return(
+            <div className={styles.container}>
+                {determineControl(control, index)}
+            </div>
+        
+        )
     })
 
     form.unshift(<h1 key={0}>{device.name}</h1>)
@@ -22,13 +30,15 @@ function determineControl(control, index) {
     index = index + 1
     switch(control.type) {
         case 'switch': 
-            return (<Toggle name={control.name} key={index}></Toggle>)
+            console.log(control.name)
+            return (<ControlToggleCard name={control.name} key={index}></ControlToggleCard>)
         case 'slider':
-            return (<Mover name={control.name} key={index}></Mover>)
+            return (<ControlSliderCard name={control.name} key={index}></ControlSliderCard>)
         default:
             console.error("Not a valid type")
     }
 }
+
 
 export default function DeviceBuilder() {
 
@@ -50,6 +60,7 @@ export default function DeviceBuilder() {
 
   return (
     <div>
+        
         <Builder data={data} ></Builder>
         <ColorPicker />
     </div>
