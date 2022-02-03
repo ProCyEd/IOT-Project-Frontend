@@ -4,5 +4,7 @@ describe('Dashboard to customers',()=>{
         
         cy.contains('Customers').click()
 
+        cy.url().should('include', '/forms')
+
     })
 })

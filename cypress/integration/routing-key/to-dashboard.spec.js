@@ -3,7 +3,9 @@ describe('Welcome Page', () => {
 
         cy.visit('/home')
 
-        cy.contains('IOT Contoller').click()    
+        cy.contains('IOT Contoller').click() 
+        
+        cy.url().should('include', '/dashboard')
         
     })
   })

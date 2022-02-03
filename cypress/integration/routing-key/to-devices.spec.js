@@ -5,5 +5,6 @@ describe('Dashboard to devices', () => {
 
         cy.contains('Devices').click()    
         
+        cy.url().should('include', '/devices')
     })
   })

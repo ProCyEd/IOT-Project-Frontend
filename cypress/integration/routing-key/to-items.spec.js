@@ -10,6 +10,8 @@ describe('Devices to Item Three',()=>{
         cy.wait(2000)
 
         cy.contains('Item Three').click({force: true})
+
+        cy.url().should('include','/devices')
         
     })
 })
