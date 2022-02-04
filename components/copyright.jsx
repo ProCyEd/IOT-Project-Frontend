@@ -7,7 +7,7 @@ export default function Copyright(){
         <Typography variant="body2" color="text.secondary" align="center" sx={{ pt: 4 }}>
         {'Copyright © '}
         <Link color="inherit" href="https://mui.com/">
-          Your Website
+          IOT Box
         </Link>{' '}
         {new Date().getFullYear()}
         {'.'}

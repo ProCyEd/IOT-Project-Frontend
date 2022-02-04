@@ -48,7 +48,7 @@ const router = useRouter()
     .then(response => response.json())
     .then(data => {
       if(data.message == 'success') {
-        router.push('/home')
+        router.push('/dashboard')
       } else {
         console.log("Invalid Login")
       }
