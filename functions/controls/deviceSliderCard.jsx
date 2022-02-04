@@ -4,7 +4,7 @@ import Mover from "./slider";
 
 export default function ControlSliderCard(props){
 
-    console.log(props)
+    // console.log(props)
 
     return(
         <div className={styles.container}>

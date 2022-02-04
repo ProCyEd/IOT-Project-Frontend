@@ -30,12 +30,14 @@ function determineControl(control, index) {
     index = index + 1
     switch(control.type) {
         case 'switch': 
-            console.log(control.name)
+            // console.log(control)
             return (<ControlToggleCard name={control.name} key={index}></ControlToggleCard>)
         case 'slider':
             return (<ControlSliderCard name={control.name} key={index}></ControlSliderCard>)
         default:
+            console.error(content.name + " ---")
             console.error("Not a valid type")
+            
     }
 }
 
@@ -57,10 +59,8 @@ export default function DeviceBuilder() {
         ]
     }
 
-
   return (
     <div>
-        
         <Builder data={data} ></Builder>
         <ColorPicker />
     </div>

@@ -4,7 +4,7 @@ import Toggle from "./toggle";
 
 export default function ControlToggleCard(props){
 
-    console.log(props)
+    // console.log(props)
 
     return(
         <div className={styles.container}>
