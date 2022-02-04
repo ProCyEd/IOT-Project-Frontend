@@ -1,7 +1,6 @@
 import { compare } from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import cookie from 'cookie';
-const BSON = require('bson');
 
 export default async function login(req, res) {
 
