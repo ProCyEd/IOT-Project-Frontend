@@ -1,0 +1,18 @@
+@import '../theme.module.scss';
+
+.container{
+
+    @include section_container;
+    // border: 1px solid black;
+
+    .title{
+        @include section_title_light;
+    }
+
+    .controlBox{
+        display: flex;
+        // grid-template-columns: 1fr 1fr 1fr 1fr;
+        flex-wrap: wrap;
+        grid-gap: $default_gap;
+    }
+}
