@@ -116,17 +116,67 @@ const data = [
                         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum eu nisl ac tempor.",
                         "controls": [
                             {
-                                "name": "switch",
-                                "function": "this is what the control does"
+                                "name": "Drop Down Selector",
+                                "type": "select",
+                                "options": [
+                                    {
+                                        "option": "option 1"
+                                    },
+                                    {
+                                        "option": "option 2"
+                                    },
+                                    {
+                                        "option": "option 3"
+                                    },
+                                    {
+                                        "option": "option 4"
+                                    },
+                                ]
                             },
                             {
-                                "name": "switch",
-                                "function": "this is what the control does"
+                                "name": "Radio Buttons",
+                                "type": "radio",
+                                "options": [
+                                    {
+                                        "option": "option 1"
+                                    },
+                                    {
+                                        "option": "option 2"
+                                    },
+                                    {
+                                        "option": "option 3"
+                                    },
+                                    {
+                                        "option": "option 4"
+                                    },
+                                ]
                             },
                             {
-                                "name": "switch",
-                                "function": "this is what the control does"
-                            }
+                                "name": "Brightness",
+                                "type": "slider"
+                            },
+                            {
+                                "name": "Radio Buttons",
+                                "type": "radio",
+                                "options": [
+                                    {
+                                        "option": "option 1"
+                                    },
+                                    {
+                                        "option": "option 2"
+                                    },
+                                    {
+                                        "option": "option 3"
+                                    },
+                                    {
+                                        "option": "option 4"
+                                    },
+                                ]
+                            },
+                            {
+                                "name": "Brightness",
+                                "type": "slider"
+                            },
                         ]
                     },
                     {
@@ -309,6 +359,7 @@ export default function Devices(){
         setValue(newValue);
     };
 
+
     return(
         <div>
             <ThemeProvider theme={mdTheme}>
@@ -337,15 +388,16 @@ export default function Devices(){
 
                         <Box sx={{ width: '100%' }}>
 
-                            <Link href={'/device2/' + "anything"}>
+                            {/* <Link href={'/device2/' + "anything"}> */}
                                 <div className={styles.container}>
 
                                     {data.map((p) => (
+                                        
                                         <IoTBox props={p}></IoTBox>
                                     ))}
                                     
                                 </div>
-                            </Link>
+                            {/* </Link> */}
 
                         </Box>
 

@@ -7,15 +7,22 @@
 
 .container{
     @include box_style_compelation;
-    @include box_hover;
+    // @include box_hover;
 
     .topContainer{
         display: grid;
-        grid-template-columns: 1fr 5fr;
+        grid-template-columns: 1fr 5fr 1fr;
         border-bottom: 3px solid black;
         padding-bottom: 2em;
 
-        
+        .bottomContainer{
+
+        }
+
+        .controls{
+            @include box_style_compelation;
+            @include box_hover;
+        }
 
         .title{
             font-size: $heading_lg;

@@ -3,7 +3,8 @@ import styles from '../../styles/device/box.module.scss';
 import Image from 'next/image';
 import {AiFillSlackSquare, AiFillDropboxSquare, AiFillFire} from 'react-icons/ai';
 import DevicePreview from "./devicePreview";
-
+import Button from '@mui/material/Button';
+import Link  from 'next/link';
 
 function Icon(props){
     const type = props.props;
@@ -27,13 +28,21 @@ function Icon(props){
 export default function IoTBox(props){
     const box = props.props.box;
     const devices = box.device;
-    // console.log(box.type);
+    // console.log(box.id);
 
     return(
         <div className={styles.container}>
             <div className={styles.topContainer}>
                 <Icon props={box.type}></Icon>
                 <h1 className={styles.title}>{box.name}</h1>
+                <div className={styles.btnContainer}>
+                    {/* <div className={styles.controls}>Controls</div> */}
+                    <Link href={'/device2/' + box.id}>
+                        <Button variant="outlined">Veiw Controls</Button>
+                    </Link>
+                    <h1></h1>
+                    <Button variant="outlined">Request Access</Button>
+                </div>
             </div>
             <div className={styles.bottomContainer}>
                 <div className={styles.descriptionContainer}>
