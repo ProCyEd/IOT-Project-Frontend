@@ -8,8 +8,8 @@ import Select from '@mui/material/Select';
 export default function BasicSelect({name, options}) {
   const [age, setAge] = React.useState('');
 
-  console.log(options)
-  console.log(name)
+  // console.log(options)
+  // console.log(name)
 
   const handleChange = (event) => {
     setAge(event.target.value);
