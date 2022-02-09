@@ -24,7 +24,7 @@ export default async function login(req, res) {
 
     if (req.body.password == person.password) {
       const claims = { myPersonEmail: person.email };
-      const accessToken = jwt.sign(claims, process.env.ACCESS_TOKEN)
+      const accessToken = jwt.sign(claims, "secret_key")
       //const jwt = sign(claims, secret, { expiresIn: '1h' });
       res.setHeader("Set-Cookie", cookie.serialize("token", accessToken, {
         httpOnly: true,

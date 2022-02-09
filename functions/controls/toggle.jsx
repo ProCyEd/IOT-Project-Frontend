@@ -15,16 +15,19 @@ export default function Toggle({name}) {
             message: message
         }
 
-        await fetch('http://localhost:3000/api/rabbitMQ/internalTesting', {
+        await fetch('http://localhost:3001/control/publish', {
             method: 'POST',
+            credentials: 'include',
             headers: {
-              'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
+                /* 'Access-Control-Allow-Origin': 'http://localhost:3001/api/reservation',
+                'Access-Control-Allow-Credentials': true, */
             },
-            body: JSON.stringify(data),
-          })
+                body: JSON.stringify(data),
+            })
           .then(response => response.json())
           .then(data => {
-            console.log(data.response)
+            console.log(data)
             console.log("enabled")
             setDisabled(false)
           })
