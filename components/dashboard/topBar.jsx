@@ -26,15 +26,16 @@ export default function TopBar(){
 
   async function handleLogout() {
       
-      await fetch('http://localhost:3000/api/auth/logout', {
+      await fetch('http://localhost:3001/logout', {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
     })
-    .then(response => response.json())
+    //.then(response => response.json())
     .then(data => {
-      if(data.Success) {
+      if(data.status == 200) {
         router.push('/')
       } else {
         console.log("Logout Failed")
