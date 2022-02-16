@@ -9,7 +9,7 @@ export default function Toggle({name}) {
 
     useEffect(async () => {
 
-        const message = (checked ? 'on' : 'off')
+        const message = (checked ? 'True' : 'False')
 
         const data = {
             message: message
@@ -28,8 +28,14 @@ export default function Toggle({name}) {
           .then(response => response.json())
           .then(data => {
             console.log(data)
-            console.log("enabled")
-            setDisabled(false)
+            if(data.status == true) {
+                console.log("enabled")
+                setDisabled(false)
+            } else {
+                setChecked(false)
+                setDisabled(false)
+            }
+            
           })
           .catch((error) => {
             console.error('Error:', error);
