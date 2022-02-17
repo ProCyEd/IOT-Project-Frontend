@@ -27,12 +27,11 @@ export default function Toggle({name}) {
             })
           .then(response => response.json())
           .then(data => {
-            console.log(data)
-            if(data.status == true) {
+            console.log(data.msg)
+            if(data.msg == 'True') {
                 console.log("enabled")
                 setDisabled(false)
             } else {
-                setChecked(false)
                 setDisabled(false)
             }
             
