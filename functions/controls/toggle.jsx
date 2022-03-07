@@ -1,19 +1,20 @@
 import React, {useState, useEffect} from 'react';
 import Switch from'@mui/material/Switch'
+import Button from '@mui/material/Button'
 import Alert from '@mui/material/Alert'
 
 export default function Toggle({name}) {
 
-    const [checked, setChecked] = useState(false)
     const [disabled, setDisabled] = useState(false)
+    const [status, setStatus] = useState('Off')
 
-    useEffect(async () => {
-
-        const message = (checked ? 'True' : 'False')
-
+    async function buttonControl(msg) {
+        
+        setDisabled(true)
         const data = {
-            message: message
+            message: msg
         }
+        setStatus('send')
 
         await fetch('http://localhost:3001/control/publish', {
             method: 'POST',
@@ -27,11 +28,14 @@ export default function Toggle({name}) {
             })
           .then(response => response.json())
           .then(data => {
-            console.log(data.msg)
+            console.log(data)
             if(data.msg == 'True') {
+                setStatus(data.status)
                 console.log("enabled")
                 setDisabled(false)
             } else {
+                setStatus('off')
+                alert("Request Timeout")
                 setDisabled(false)
             }
             
@@ -39,18 +43,12 @@ export default function Toggle({name}) {
           .catch((error) => {
             console.error('Error:', error);
           });
-    }, [checked]);
-    
-
-    async function handleChange() {
-        setDisabled(!disabled)
-        setChecked(!checked)
     }
 
     function determineAlert() {
-        if(!checked && !disabled) {
+        if(status == 'Off') {
             return <Alert severity="error">Off</Alert>
-        } else if(disabled) {
+        } else if(status == 'send') {
             return <Alert severity="warning">Sending Request</Alert>
         } else {
             return <Alert severity="success">On</Alert>
@@ -60,7 +58,8 @@ export default function Toggle({name}) {
     return (
         <>
             <div>{name}</div>
-            <Switch checked={checked} onChange={handleChange} disabled={disabled}/>
+            <Button variant={'outlined'} disabled={disabled} onClick={() => buttonControl("On")}>On</Button>
+            <Button variant={'outlined'} disabled={disabled} onClick={() => buttonControl("Off")}>Off</Button>
             {determineAlert()}
         </>
     )
