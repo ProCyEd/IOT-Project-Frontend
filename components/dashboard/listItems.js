@@ -33,7 +33,7 @@ export const mainListItems = (
 		</ListItem>
 	</Link>
 
-    <Link href="forms">
+    {/* <Link href="forms">
 		<ListItem button>
 		<ListItemIcon>
 			<PeopleIcon />
@@ -60,13 +60,13 @@ export const mainListItems = (
 		</ListItemIcon>
 		<ListItemText primary="Integrations" />
 		</ListItem>
-	</Link>
+	</Link> */}
   </div>
 );
 
 export const secondaryListItems = (
   <div>
-    <ListSubheader inset>Saved reports</ListSubheader>
+    {/* <ListSubheader inset>Saved reports</ListSubheader>
     <ListItem button>
       <ListItemIcon>
         <AssignmentIcon />
@@ -84,6 +84,6 @@ export const secondaryListItems = (
         <AssignmentIcon />
       </ListItemIcon>
       <ListItemText primary="Year-end sale" />
-    </ListItem>
+    </ListItem> */}
   </div>
 );
