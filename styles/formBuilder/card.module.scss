@@ -1,0 +1,6 @@
+@import '../theme.module.scss';
+
+.container{
+    @include box_style_compelation;
+
+}

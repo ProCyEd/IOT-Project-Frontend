@@ -1,0 +1,20 @@
+@import '../theme.module.scss';
+
+.container{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: .5em;
+
+    .name{
+        // @include box_style_compelation;
+        // @include dark_theme;
+        padding: 1em;
+        text-transform: uppercase;
+        font-size: $heading_sm;
+    }
+
+    .description{
+        @include box_style_compelation;
+        @include dark_theme;
+    }
+}

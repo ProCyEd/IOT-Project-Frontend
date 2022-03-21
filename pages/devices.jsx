@@ -134,50 +134,7 @@ export default function Devices(){
                     
                     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
 
-                        <Box sx={{ width: '100%' }}>
-
-                            {/* Tab labels and organizaiton */}
-
-                            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                                    <Tab label="Catagory One" {...a11yProps(0)} />
-                                    <Tab label="Lightbulb" {...a11yProps(1)} />
-                                    <Tab label="Item Three" {...a11yProps(2)} />
-                                </Tabs>
-                            </Box>
-                            
-
-                            {/* Tab Content */}
-                            <TabPanel value={value} index={0}>
-                                <Box sx={{flexFrow: 1 }}>
-                                    <Grid container spacing={0}>
-                                        <Grid item xs={9}>
-                                            <Item>
-                                                <EnhancedTable></EnhancedTable>
-                                            </Item>
-                                        </Grid>
-                                        <Grid item xs={3}>
-                                            <Item>
-                                                <Checkout></Checkout>
-                                            </Item>
-                                        </Grid>
-                                    </Grid>
-                                </Box>
-                            </TabPanel>
-                            <TabPanel value={value} index={1}>
-
-                            <div>Lightbulb Control</div>
-                                
-                            <Button variant="contained" color="success" onClick={() => toggle(true)}>Turn On</Button>
-                            <Button variant="contained" color="error" onClick={() => run()}>Turn Off</Button>
-
-
-                            </TabPanel>
-                            <TabPanel value={value} index={2}>
-                                <DeviceBuilder></DeviceBuilder>
-                            </TabPanel>
-
-                        </Box>
+                        <DeviceBuilder></DeviceBuilder>
 
                         {/* Copyright */}
                         <Copyright></Copyright>
