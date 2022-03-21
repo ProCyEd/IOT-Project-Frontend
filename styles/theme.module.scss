@@ -1,0 +1,250 @@
+// Mixins
+
+// @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;500&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300&family=Oswald:wght@300;500&display=swap");
+// @import url(../public/fonts/Lato/Lato-Black.ttf);
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300&family=Oswald:wght@300;500&display=swap');
+
+
+// @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300&family=Oswald:wght@300;500&display=swap');
+
+
+// Themes
+
+@mixin background_img($position: center) {
+    background-position: $position;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@mixin dark_theme($background_color: $background_dark, $padding: 1.5em, $font: $font){
+    text-align: center;
+    color: $dark_txt;
+    background-color: $background_color;
+    font-family: $font;
+    font-weight: $pStroke;
+    padding: $padding;
+}
+
+    @mixin dark_theme_sm(){
+        font-size: 1.15em;
+        line-height: 3em;
+    }
+
+@mixin light_theme($background_color: $background_light, $padding: 1.5em, $font: $font){
+        text-align: center;
+        color: $light_txt;
+        background-color: $background_color;
+        font-family: $font;
+        font-weight: $pStroke;
+        padding: $padding;
+    }
+    
+        @mixin light_theme_sm(){
+            font-size: 1.15em;
+            line-height: 3em;
+        }
+
+// hover
+
+@mixin all_hover {
+    text-decoration: none;
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+@mixin box_hover{
+    @include all_hover();
+    &:hover{
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+}
+
+@mixin link_hover($link_hover_color: $main_hover_color) {
+    &:hover{
+        cursor: pointer;
+        color: $link_hover_color;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: .15em;
+        background-color: $link_hover_color;
+        opacity: 0;
+        transition: opacity 300ms, transform 300ms;
+        transition: .5s;
+    }
+    
+    &:hover::after,
+    &:focus::after {
+        opacity: 1;
+        transform: translate3d(0, 0.2em, 0);
+        
+    }
+
+}
+
+// sections
+
+    @mixin section_title_light() {
+        @include light_theme($padding: 0em, $font: $heading_font);
+        font-size: $heading_lg;
+        font-weight: $stroke;
+        text-align: center;
+        // padding-top: 1.5em;
+        // padding-bottom: .5em;
+        letter-spacing: .25em;
+        text-transform: uppercase;
+        line-height: 2em;
+
+        @media (max-width: $break_point) {
+            font-size: $heading_md;
+        }
+
+    }
+
+    @mixin section_title_dark() {
+        @include dark_theme($padding: 0em, $font: $heading_font);
+        font-size: $heading_lg;
+        font-weight: $stroke;
+        text-align: center;
+        // padding-top: 1.5em;
+        // padding-bottom: .5em;
+        letter-spacing: .25em;
+        text-transform: uppercase;
+        line-height: 2em;
+
+        @media (max-width: $break_point) {
+            font-size: $heading_md;
+        }
+    }
+
+    @mixin section_container {
+        margin-right: calc(calc(100vw - 60em) / 2);
+        margin-left: calc(calc(100vw - 60em) / 2);
+        // margin-top: 3em;
+        // margin-bottom: 3em;
+        padding-bottom: 3em;
+    }
+
+
+// Box
+
+    @mixin box_shadow {
+        // box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        // https://getcssscan.com/css-box-shadow-examples
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+
+    @mixin box_txt {
+        line-height: 2em;
+        font-weight: bold;
+        font-size: 1em;
+    }
+
+    @mixin box_style_compelation {
+        @include light_theme;
+        @include light_theme_sm;
+        @include box_shadow;
+        @include box_txt;
+        padding: 2em;
+        border-radius: $card_radius;
+    }
+
+    @mixin box_style_compelation_dark {
+        @include dark_theme;
+        @include dark_theme_sm();
+        @include box_shadow;
+        @include box_txt;
+        padding: 2em;
+        border-radius: $card_radius;
+    }
+
+// paragraphs
+
+    @mixin p_graph {
+        // include theme
+        // @include dark_theme();
+        line-height: 2em;
+        letter-spacing: .08em;
+        text-align: left;
+    }
+
+
+
+// ----------------------------------------------
+
+// Primary Colors
+
+    $main_txt: white;
+    $charcol: #202124;
+    $grey: #999999;
+    $light_grey: #F2F2F2;
+    $red: #AE122A;
+    $yellow: #FFD619;
+
+// Font
+
+    // $font: Georgia, serif;
+    // $font: sans-serif;
+    // $font: Times, sans-serif;
+    // $font: monospace;
+    // $font: Robato;
+    // $font: 'Oswald', sans-serif;
+    $font: 'Lato', sans-serif;
+    $heading_font: 'Oswald', sans-serif;
+    // $font: Lato;
+
+    // stroke
+        $stroke: 500;
+
+        $pStroke: 800;
+
+
+// Hover Color
+
+    $main_hover_color:  $red;
+
+// Headings
+
+    $heading_lg: 3.5em;
+    $heading_md: 2em;
+    $heading_sm: 1.3em;
+
+        // Primary Themes
+
+            // Dark
+
+                $background_dark: #231F20;
+                $dark_txt: #FEFEFE;
+
+            // Light
+
+                $background_light: #ffff;
+                $light_txt: #2C313A;
+
+// grid gap
+
+    $default_gap: 1.5em;
+
+// Nav
+
+    $navbar_color: $dark_txt;
+    $navbar_hover_color: $main_hover_color;
+
+// Cards
+
+$card_radius: .5em;
+
+// Responsive
+
+$break_point: 1000px;
+$break_point_margins: 2em;

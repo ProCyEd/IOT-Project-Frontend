@@ -1,0 +1,9 @@
+@import "../theme.module.scss";
+
+.container{
+    display: grid;
+    grid-template-columns: auto;
+
+    grid-gap: $default_gap;
+
+}
