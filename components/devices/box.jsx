@@ -38,7 +38,7 @@ export default function IoTBox(props){
                 <div className={styles.btnContainer}>
                     {/* <div className={styles.controls}>Controls</div> */}
                     <Link href={'/device2/' + box.id}>
-                        <Button variant="outlined">Veiw Controls</Button>
+                        <Button variant="outlined">View Controls</Button>
                     </Link>
                     <h1></h1>
                     <Button variant="outlined">Request Access</Button>

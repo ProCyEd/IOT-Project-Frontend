@@ -14,15 +14,24 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 
 export const mainListItems = (
   <div>
-    <Link href="dashboard">
+    <Link href="addBox">
 		<ListItem button>
 		<ListItemIcon>
 			<DashboardIcon />
 		</ListItemIcon>
-		<ListItemText primary="Dashboard" />
+		<ListItemText primary="Add Box" />
 		</ListItem>
 	</Link>
 
+	<Link href="removeBox">
+		<ListItem button>
+		<ListItemIcon>
+			<DashboardIcon />
+		</ListItemIcon>
+		<ListItemText primary="Remove Box" />
+		</ListItem>
+	</Link>
+	
     <Link href="devices">
 		<ListItem button>
 		<ListItemIcon>
@@ -33,57 +42,11 @@ export const mainListItems = (
 		</ListItem>
 	</Link>
 
-    {/* <Link href="forms">
-		<ListItem button>
-		<ListItemIcon>
-			<PeopleIcon />
-		</ListItemIcon>
-		<ListItemText primary="Customers" />
-		</ListItem>
-	</Link>
-
-	<Link href="https://www.google.com">
-		<ListItem button>
-		<ListItemIcon>
-			<BarChartIcon />
-		</ListItemIcon>
-		<ListItemText primary="Reports" />
-		</ListItem>
-	</Link>
-
-    
-
-	<Link href="https://www.google.com">
-		<ListItem button>
-		<ListItemIcon>
-			<LayersIcon />
-		</ListItemIcon>
-		<ListItemText primary="Integrations" />
-		</ListItem>
-	</Link> */}
   </div>
 );
 
 export const secondaryListItems = (
   <div>
-    {/* <ListSubheader inset>Saved reports</ListSubheader>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Current month" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Last quarter" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
-    </ListItem> */}
+   
   </div>
 );

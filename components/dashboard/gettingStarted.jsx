@@ -34,18 +34,39 @@ function GettingStarted() {
     <div>
         <Grid container spacing={2}>
             <Grid item xs={8}>
-                <h1>Getting Started</h1>
+                <h1>Add a box</h1>
             </Grid>
-            <Grid item xs={4}>
-                <></>
+            <Grid item xs={6}>
+                <p>
+                
+                    Box Name: 
+                    <br></br>
+                    <input type="Text" name="boxName" id = "boxName" /> 
+                    <br></br><br></br>
+
+                    Box Location 
+                    <br></br>
+                    <input type="Text" name="boxLocation" id = "boxLocation" /> 
+                    <br></br>
+
+                   
+
+
+                </p>
             </Grid>
-            <Grid item xs={4}>
-                <h3>Select a Box to start experimenting</h3>
-            </Grid>
+            
             <Grid item xs={8}>
-                <Button variant="contained" onClick={reserve}>Get Started Here</Button>
+                <Button variant="contained" onClick={reserve}>Add box</Button>
             </Grid>
         </Grid>
+
+        <Grid container spacing={2}>
+
+            <Grid item xs={6}>
+                <h1>Add device to box</h1>
+            </Grid>
+        </Grid>
+
     </div>
     )
 }

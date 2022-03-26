@@ -132,7 +132,6 @@ export default function TopBar(){
 
               </Typography>
 
-
               <IconButton color="inherit" /* onClick={signOut()} */>
                 <Badge badgeContent={2000} color="secondary">
                   <NotificationsIcon />
