@@ -14,7 +14,7 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 
 export const mainListItems = (
   <div>
-    <Link href="addBox">
+    <Link href="http://localhost:3000/addBox">
 		<ListItem button>
 		<ListItemIcon>
 			<DashboardIcon />
