@@ -19,13 +19,24 @@ const mdTheme = createTheme({
         },
     }
   });
+  var mysql = require('mysql');
 
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "mySQL2021",
+      database: "IoT_Database"
+    });
+
+    con.connect(function(err) {
+      if (err) throw err;
+      console.log("Connected!");
+    });
 function addBox() {
 
-
-  
   return (
     <div>
+
         <Grid container spacing={2}>
             <Grid item xs={10}>
                 <h1>Add a box</h1>
@@ -67,13 +78,29 @@ function addBox() {
             </Grid>
             
             <Grid item xs={8}>
-                <Button variant="contained" onClick={addBox}>Add box</Button>
+                <Button variant="contained" onClick={newBox}>Add box</Button>
             </Grid>
         </Grid>
 
     </div>
    
     )
+}
+
+function newBox(){
+
+  con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+    var sql = "INSERT INTO deviceInformation (deviceIP) VALUES ('lightText')";
+
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("1 record inserted");
+    });
+  });
+
+
 }
 
 export default addBox;
