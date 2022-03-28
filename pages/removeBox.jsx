@@ -20,7 +20,7 @@ import { default as NextLink } from 'next/link'
     }
   });
   
-  function DashboardContent() {
+  function removeBox() {
 
     return (
       <ThemeProvider theme={mdTheme}>
@@ -45,21 +45,30 @@ import { default as NextLink } from 'next/link'
             
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
 
-              <GettingStarted></GettingStarted>
+             <h1>Select a box to delete</h1> 
 
+               <br></br>
+               <input type="checkbox" id="box1Delete" Accept/> Box 1
+               <br></br>
+
+               <input type="checkbox" id="box1Delete" Accept/> Box 2
+               <br></br>
+
+               <input type="checkbox" id="box1Delete" Accept/> Box 3
+               <br></br>
+
+               <input type="submit" name="submit" value="Submit for deletion"></input>
               {/* Copyright */}
-					<Copyright></Copyright>
             </Container>
           </Box>
         </Box>
       </ThemeProvider>
     );
   }
-  
 
   function Dashboard() {
     return <DashboardContent />;
   }
 
   // export default withAuth(Dashboard)
-  export default Dashboard
+  export default removeBox;
