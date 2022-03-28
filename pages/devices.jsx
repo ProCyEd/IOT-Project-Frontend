@@ -134,8 +134,33 @@ export default function Devices(){
                     
                     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
 
-                        <DeviceBuilder></DeviceBuilder>
 
+                        <h1>Select box to view</h1> 
+
+                        <select id = "myList" onchange = "showTable()" >  
+                        <option> Box 1 </option>  
+                        <option> Light </option>  
+                        <option> Webcam </option>  
+                        <option> Fan </option>  
+                        </select>  
+
+                        <br></br><br></br>
+
+                        <select id = "myList" onchange = "" >  
+                        <option> Box 2 </option>  
+                        <option> Light </option>  
+                        <option> Webcam </option>  
+                        <option> Fan </option>  
+                        </select>  
+
+                        <br></br><br></br>
+
+                        <select id = "myList" onchange = "" >  
+                        <option> Box 3 </option>  
+                        <option> Light </option>  
+                        <option> Webcam </option>  
+                        <option> Fan </option>  
+                        </select> 
                         {/* Copyright */}
                         <Copyright></Copyright>
 
@@ -145,4 +170,11 @@ export default function Devices(){
             </ThemeProvider>
         </div>
     )
+}
+
+function showTable() {
+
+<div></div> 
+
+
 }
