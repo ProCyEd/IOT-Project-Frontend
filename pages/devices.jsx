@@ -137,30 +137,33 @@ export default function Devices(){
 
                         <h1>Select box to view</h1> 
 
+                        Box 1<br></br>                
                         <select id = "myList" onchange = "showTable()" >  
-                        <option> Box 1 </option>  
                         <option> Light </option>  
                         <option> Webcam </option>  
                         <option> Fan </option>  
                         </select>  
+                        <input type="submit" name="submit" value="View Device"></input>
 
                         <br></br><br></br>
-
+                        Box 2<br></br>
                         <select id = "myList" onchange = "" >  
-                        <option> Box 2 </option>  
                         <option> Light </option>  
                         <option> Webcam </option>  
                         <option> Fan </option>  
                         </select>  
+                        <input type="submit" name="submit" value="View Device"></input>
 
                         <br></br><br></br>
-
+                        Box 3<br></br>
                         <select id = "myList" onchange = "" >  
                         <option> Box 3 </option>  
                         <option> Light </option>  
                         <option> Webcam </option>  
                         <option> Fan </option>  
                         </select> 
+                        <input type="submit" name="submit" value="View Device"></input>
+
                         {/* Copyright */}
                         <Copyright></Copyright>
 
