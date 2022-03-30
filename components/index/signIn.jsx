@@ -38,17 +38,18 @@ const router = useRouter()
       password: creds.get('password')
     }
     
-    await fetch('http://localhost:3000/api/auth/login', {
+    await fetch('http://localhost:3001/login', {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     })
-    .then(response => response.json())
+    //.then(response => response.json())
     .then(data => {
-      if(data.message == 'success') {
-        router.push('/home')
+      if(data.status == 200) {
+        router.push('/dashboard')
       } else {
         console.log("Invalid Login")
       }

@@ -9,16 +9,42 @@ import Badge from '@mui/material/Badge';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MuiDrawer from '@mui/material/Drawer';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import LogoutIcon from '@mui/icons-material/Logout';
 import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
 import { mainListItems, secondaryListItems } from './listItems';
 import Link from 'next/link';
+import { useRouter } from 'next/router'
 
 /* async function signOut() {
   const result = await fetch('http://localhost:3000/api/auth/logout')
 }
  */
 export default function TopBar(){
+
+  const router = useRouter()
+
+  async function handleLogout() {
+      
+      await fetch('http://localhost:3001/logout', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    //.then(response => response.json())
+    .then(data => {
+      if(data.status == 200) {
+        router.push('/')
+      } else {
+        console.log("Logout Failed")
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  }
 
     const drawerWidth = 240;
 
@@ -113,6 +139,9 @@ export default function TopBar(){
                 </Badge>
               </IconButton>
 
+              <IconButton color="inherit" /* onClick={signOut()} */>
+                  <LogoutIcon onClick={handleLogout}/>
+              </IconButton>
 
             </Toolbar>
           </AppBar>

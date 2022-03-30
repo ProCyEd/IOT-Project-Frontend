@@ -8,17 +8,18 @@ import Grid from '@mui/material/Grid';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
-import TopBar from '../components/dashboard/topBar';
-import Copyright from '../components/copyright';
+import TopBar from '../../components/dashboard/topBar';
+import Copyright from '../../components/copyright';
 import PropTypes from 'prop-types';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
-import Checkout from "../components/devices/checkout";
-import styles from '../styles/Forms/forms.module.scss';
-import FormCard from "../components/forms/formCard";
-
-
-import EnhancedTable from '../components/devices/deviceTableOne';
+import Button from '@mui/material/Button'
+import Checkout from "../../components/devices/checkout";
+import EnhancedTable from '../../components/devices/deviceTableOne';
+import DeviceBuilder from "../../functions/deviceBuilder";
+import styles from '../../styles/device/device.module.scss';
+import IoTBox from "../../components/devices/box";
+import Link  from 'next/link';
 
 const mdTheme = createTheme({
     palette: {
@@ -70,15 +71,54 @@ const Item = styled(Box)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
+async function toggle(type) {
+
+    var data;
+
+    if(type){
+        data = {
+            message: "on"
+        }
+    } else {
+        data = {
+            message: "off"
+        }
+    }
+
+    await fetch('http://localhost:3000/api/rabbitMQ/publishTest', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data.response)
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
 
 
-export default function Forms(){
+export async function getStaticProps({params}) {
+    const result = await fetch('http://localhost:3000/api/data')
+    const res = await result.json()
+    return {
+        props: { res }, 
+    }
+}
+
+export default function Devices(props){
+    const data = props.res
 
     const [value, setValue] = React.useState('one');
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
 
     return(
         <div>
@@ -102,18 +142,24 @@ export default function Forms(){
                     overflow: 'auto',
                     }}
                 >
-                   
+                    <Toolbar />
                     
                     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
 
-                        <div className={styles.spacer}></div>
-                        <div className={styles.container}>
-                            
-                            <FormCard title="Title" subTitle="sub title"></FormCard>
-                            <FormCard title="Title" subTitle="sub title"></FormCard>
-                            <FormCard title="Title" subTitle="sub title"></FormCard>
-                            <FormCard title="Title" subTitle="sub title"></FormCard>
-                        </div>
+                        <Box sx={{ width: '100%' }}>
+
+                            {/* <Link href={'/device2/' + "anything"}> */}
+                                <div className={styles.container}>
+
+                                    {data.map((p) => (
+                                        
+                                        <IoTBox props={p}></IoTBox>
+                                    ))}
+                                    
+                                </div>
+                            {/* </Link> */}
+
+                        </Box>
 
                         {/* Copyright */}
                         <Copyright></Copyright>
