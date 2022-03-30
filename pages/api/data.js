@@ -30,6 +30,24 @@ const data = [
                                 ]
                             },
                             {
+                                "name": "Drop Down Selector",
+                                "type": "select",
+                                "options": [
+                                    {
+                                        "option": "option 1"
+                                    },
+                                    {
+                                        "option": "option 2"
+                                    },
+                                    {
+                                        "option": "option 3"
+                                    },
+                                    {
+                                        "option": "option 4"
+                                    },
+                                ]
+                            },
+                            {
                                 "name": "Radio Buttons",
                                 "type": "radio",
                                 "options": [
